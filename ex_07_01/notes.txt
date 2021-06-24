@@ -21,8 +21,81 @@ print('Line Count:', count)
 
 $ python3 open.py 
 Line Count: 132045
-
 ```
 
 
 - We can also read the whole file into a single string
+
+```
+>>> fhand = open('mbox-short.txt')
+>>> inp = fhand.read()
+>>> print(len(inp))
+94626
+>>> print(inp[:20])
+From stephen.marquar
+```
+
+- We can put an if statement in our for loop to only print lines that meet some criteria
+
+```
+fhand = open('mbox-short.txt')
+for line in fhand:
+    if line.startswith('From:'):
+        print(line)
+```
+
+Outcome:
+
+```
+From: stephen.marquard@uct.ac.za\n
+\n 
+From: louis@media.berkeley.edu\n
+\n
+From: zqian@umich.edu\n
+\n
+From: rjlowe@iupui.edu\n
+\n
+```
+
+- Print adds a separate new line
+  - rstrip allows us to remove white space
+- instead we should do:
+
+```
+fhand = open('mbox-short.txt')
+for line in fhand:
+    line = line.rstrip()
+    if line.startswith('From:'):
+        print(line)
+```
+
+Outcome:
+
+```
+From: stephen.marquard@uct.ac.za
+From: louis@media.berkeley.edu
+From: zqian@umich.edu
+From: rjlowe@iupui.edu
+```
+
+- We can conveniently skip a line by using the continue statement
+
+```
+fhand = open('mbox-short.txt')
+for line in fhand:
+    line = line.rstrip()
+    if not line.startswith('From:'):
+      continue
+    print(line)
+```
+
+- We can look for a string anywhere in a line as our selection criteria
+
+```
+fhand = open('mbox-short.txt')
+for line in fhand:
+    line = line.rstrip()
+    if not '@uct.ac.za' in line:
+        continue
+    print(line)
+```
