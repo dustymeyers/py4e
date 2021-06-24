@@ -99,3 +99,21 @@ for line in fhand:
         continue
     print(line)
 ```
+
+- Example of file input with try catch for bad file name
+- quit() will immediately kill the program not allowing anything else to be executed
+
+```
+fname = input('Enter the file name: ')
+try:
+    fhand = open(fname)
+except:
+    print('File cannot be opened:', fname)
+    quit()
+
+count = 0
+for line in fhand:
+    if line.startswith('Subject:'):
+        count = count + 1
+print('There were', count, 'subject lines in ', fname)
+```
