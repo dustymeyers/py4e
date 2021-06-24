@@ -1,0 +1,28 @@
+- a file handle open for read can be treated as a sequence of strings where each line in the file is a string in the sequence
+- We can use the for statement to iterate through a sequence
+- Rember a sequence is an ordered set 
+
+```
+  xfile = open('mbox-short.txt')
+  for cheese in xfile:
+    print(cheese)
+```
+
+- Open a file read-only
+- Use a for loop to read each line
+- Count the lines and print out the number of lines
+
+```
+fhand = open('mbox.txt')
+count = 0
+for line in fhand:
+    count = count + 1
+print('Line Count:', count)
+
+$ python3 open.py 
+Line Count: 132045
+
+```
+
+
+- We can also read the whole file into a single string
